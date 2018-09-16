@@ -1,0 +1,24 @@
+PODS:
+  - Func/Constraint (1.2.8):
+    - Func/Core
+  - Func/Core (1.2.8)
+  - Func/Decoding (1.2.8):
+    - Func/Core
+  - Func/UI (1.2.8):
+    - Func/Constraint
+    - Func/Core
+
+DEPENDENCIES:
+  - Func/Decoding (from `~/Documents/Development/Pods/Func`)
+  - Func/UI (from `~/Documents/Development/Pods/Func`)
+
+EXTERNAL SOURCES:
+  Func:
+    :path: "~/Documents/Development/Pods/Func"
+
+SPEC CHECKSUMS:
+  Func: ebd0eee14153f20b3ae750147a3e4d3b75fd95ba
+
+PODFILE CHECKSUM: fcaabc9d3bc6b5ed49bd4240d6a0b878521928cd
+
+COCOAPODS: 1.5.0

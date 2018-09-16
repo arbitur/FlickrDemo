@@ -1,0 +1,6 @@
+framework module Func {
+  umbrella header "Func-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,92 @@
+{
+  "name": "Func",
+  "version": "1.2.8",
+  "authors": {
+    "Arbitur": "arbiturr@gmail.com"
+  },
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "homepage": "https://github.com/arbitur/Func",
+  "source": {
+    "git": "https://github.com/arbitur/Func.git",
+    "tag": "1.2.8",
+    "branch": "master"
+  },
+  "summary": "Collection of extensions and helper classes",
+  "platforms": {
+    "ios": "10.0"
+  },
+  "module_name": "Func",
+  "default_subspecs": "Core",
+  "subspecs": [
+    {
+      "name": "Core",
+      "frameworks": [
+        "UIKit",
+        "CoreLocation"
+      ],
+      "source_files": [
+        "source/*.swift",
+        "source/Core/**/*.swift"
+      ]
+    },
+    {
+      "name": "UI",
+      "frameworks": "WebKit",
+      "source_files": "source/UI/**/*.swift",
+      "resources": "source/Assets/UI/*",
+      "dependencies": {
+        "Func/Core": [
+
+        ],
+        "Func/Constraint": [
+
+        ]
+      }
+    },
+    {
+      "name": "Constraint",
+      "source_files": "source/Constraint/**/*.swift",
+      "dependencies": {
+        "Func/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "API",
+      "source_files": "source/API/**/*.swift",
+      "dependencies": {
+        "Func/Core": [
+
+        ],
+        "Alamofire": [
+          "~> 4.0"
+        ]
+      }
+    },
+    {
+      "name": "Decoding",
+      "source_files": "source/Decoding/**/*.swift",
+      "dependencies": {
+        "Func/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "Geocoding",
+      "source_files": "source/Geocoding/**/*.swift",
+      "dependencies": {
+        "Func/API": [
+
+        ],
+        "Func/Decoding": [
+
+        ]
+      }
+    }
+  ]
+}
