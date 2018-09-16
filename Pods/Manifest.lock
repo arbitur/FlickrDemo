@@ -1,24 +1,30 @@
 PODS:
-  - Func/Constraint (1.2.8):
+  - Func/Constraint (1.2.9):
     - Func/Core
-  - Func/Core (1.2.8)
-  - Func/Decoding (1.2.8):
+  - Func/Core (1.2.9)
+  - Func/Decoding (1.2.9):
     - Func/Core
-  - Func/UI (1.2.8):
+  - Func/UI (1.2.9):
     - Func/Constraint
     - Func/Core
 
 DEPENDENCIES:
-  - Func/Decoding (from `~/Documents/Development/Pods/Func`)
-  - Func/UI (from `~/Documents/Development/Pods/Func`)
+  - Func/Decoding (from `https://github.com/arbitur/Func.git`, tag `1.2.9`)
+  - Func/UI (from `https://github.com/arbitur/Func.git`, tag `1.2.9`)
 
 EXTERNAL SOURCES:
   Func:
-    :path: "~/Documents/Development/Pods/Func"
+    :git: https://github.com/arbitur/Func.git
+    :tag: 1.2.9
+
+CHECKOUT OPTIONS:
+  Func:
+    :git: https://github.com/arbitur/Func.git
+    :tag: 1.2.9
 
 SPEC CHECKSUMS:
-  Func: ebd0eee14153f20b3ae750147a3e4d3b75fd95ba
+  Func: f41aba8c307d6e499811dcef05a9588c5783ec45
 
-PODFILE CHECKSUM: fcaabc9d3bc6b5ed49bd4240d6a0b878521928cd
+PODFILE CHECKSUM: 7d8d9260baa6e0875c0db4d471754ec965108c1e
 
 COCOAPODS: 1.5.0

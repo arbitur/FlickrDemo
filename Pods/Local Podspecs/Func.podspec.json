@@ -1,6 +1,6 @@
 {
   "name": "Func",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "authors": {
     "Arbitur": "arbiturr@gmail.com"
   },
@@ -11,7 +11,7 @@
   "homepage": "https://github.com/arbitur/Func",
   "source": {
     "git": "https://github.com/arbitur/Func.git",
-    "tag": "1.2.8",
+    "tag": "1.2.9",
     "branch": "master"
   },
   "summary": "Collection of extensions and helper classes",
