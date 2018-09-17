@@ -50,8 +50,7 @@ final class ImageDetailViewController: UIViewController {
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 		super.traitCollectionDidChange(previousTraitCollection)
 		
-		print(#function, self.view.bounds)
-		ImageLoader.default.retreiveImage(for: self.viewModel.imageUrl) { [weak self] result in
+		imageView.setImageUrl(viewModel.imageUrl) { [weak self] result in
 			switch result {
 				case let .success(image): self?.imageView.image = image.resized(to: self!.view.bounds.size, scalingMode: .aspectFit)
 				case let .failure(error): print(error)
@@ -107,12 +106,7 @@ final class ImageDetailViewController: UIViewController {
 				return
 			}
 			
-			ImageLoader.default.retreiveImage(for: url) { [weak self] result in
-				switch result {
-					case let .success(image): self?.overlay.profileImage.image = image
-					case let .failure(error): print(error)
-				}
-			}
+			self?.overlay.profileImage.setImageUrl(url)
 		}
 		
 		viewModel.userName.bind { [weak self] name in
@@ -126,21 +120,6 @@ final class ImageDetailViewController: UIViewController {
 		viewModel.uploadDate.bind { [weak self] date in
 			self?.overlay.dateLabel.text = date?.format(DateFormatter.Style.medium, timeStyle: DateFormatter.Style.medium)
 		}
-	}
-	
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		// Filthy solution for zero sized view
-//		Dispatch.main.async {
-//			ImageLoader.default.retreiveImage(for: self.viewModel.imageUrl) { [weak self] result in
-//				switch result {
-//					case let .success(image): self?.imageView.image = image.resized(to: self!.scrollView.bounds.size, scalingMode: .aspectFit)
-//					case let .failure(error): print(error)
-//				}
-//			}
-//		}
 	}
 }
 

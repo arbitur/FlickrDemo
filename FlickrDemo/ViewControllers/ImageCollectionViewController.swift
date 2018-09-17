@@ -38,17 +38,7 @@ class ImageCollectionViewController <ViewModel: ImageCollectionViewModel>: UIVie
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionCellView.reuseIdentifier, for: indexPath) as! ImageCollectionCellView
 		
 		// To not get in an infinite loop from ImageLoader.retreiveImage
-		if let image = viewModel.image(at: indexPath) {
-			cell.imageView.image = image
-		}
-		else {
-			ImageLoader.default.retreiveImage(for: viewModel.imageUrl(at: indexPath)) { [weak cell] result in
-				switch result {
-					case let .success(image): cell?.imageView.image = image
-					case let .failure(error): print(error)
-				}
-			}
-		}
+		cell.imageView.setImageUrl(viewModel.imageUrl(at: indexPath))
 		return cell
 	}
 	

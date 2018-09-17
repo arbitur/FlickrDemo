@@ -28,15 +28,16 @@ final class SearchImageCollectionViewController: ImageCollectionViewController <
 		ActivityIndicator.show()
 		
 		viewModel.search(query: query) { result in
+			ActivityIndicator.dismiss(animated: true)
+			
 			switch result {
+			case .success:
+				self.collectionView.scrollToItem(at: IndexPath.init(item: 0, section: 0), at: UICollectionView.ScrollPosition.top, animated: true)
+				
 			case .failure(let error):
 				let alert = AlertDialog(title: "Ett fel inträffade", subtitle: error)
 				alert.addCancel(title: "OK")
 				self.present(alert)
-				fallthrough
-				
-			default:
-				ActivityIndicator.dismiss(animated: true)
 			}
 		}
 	}

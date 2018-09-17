@@ -69,6 +69,7 @@ final class ImageLoader {
 		else {
 			print("Download new task", url)
 			let task = DownloadTask(url: url, listener: completion)
+			tasks[url] = task
 			
 			session.dataTask(with: url) { (data, response, error) in
 				defer { self.tasks.removeValue(forKey: url) }
@@ -85,6 +86,48 @@ final class ImageLoader {
 					task.broadcast(result: .success(image))
 				}
 			}.resume()
+		}
+	}
+}
+
+
+
+
+
+private var UIImageViewImageUrlKey: Void?
+
+extension UIImageView {
+	
+	func setImageUrl(_ url: URL, completion: ImageLoader.DownloadTask.Listener? = nil) {
+		self.imageUrl = url
+		
+		ImageLoader.default.retreiveImage(for: url) { result in
+			guard self.imageUrl == url else {
+				return
+			}
+			
+			if let completion = completion {
+				completion(result)
+			}
+			else {
+				switch result {
+				case let .success(image):
+					self.image = image
+					
+				case let .failure(error):
+					print(error)
+				}
+			}
+		}
+	}
+	
+	
+	var imageUrl: URL? {
+		get {
+			return objc_getAssociatedObject(self, &UIImageViewImageUrlKey) as? URL
+		}
+		set {
+			objc_setAssociatedObject(self, &UIImageViewImageUrlKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 		}
 	}
 }
