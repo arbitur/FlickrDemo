@@ -18,20 +18,17 @@ final class ImageLoader {
 		
 		let url: URL
 		typealias Listener = (Result<UIImage>) -> ()
-//		var listeners: [Listener]
-		var listener: Listener
+		var listeners: [Listener]
 		
 		fileprivate func broadcast(result: Result<UIImage>) {
-//			listeners.forEach {
-//				$0(result)
-//			}
-			listener(result)
+			listeners.forEach {
+				$0(result)
+			}
 		}
 		
 		init(url: URL, listener: @escaping Listener) {
 			self.url = url
-//			self.listeners = [listener]
-			self.listener = listener
+			self.listeners = [listener]
 		}
 		
 		deinit {
@@ -63,8 +60,7 @@ final class ImageLoader {
 		}
 		else if let task = tasks[url] {
 			print("Joined another task")
-//			task.listeners.append(completion)
-			task.listener = completion
+			task.listeners ++= completion
 		}
 		else {
 			print("Download new task", url)
